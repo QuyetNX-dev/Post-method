@@ -11,11 +11,12 @@ app.get("/", (req, res) => {
   })
 });
 
-app.get("/", (req, res) => {
+app.get("/users", (req, res) => {
   res.render('todos.pug',{
     users: [
       {id: 1, name: 'đẹp trai'},
-      
+      {id: 2, name: 'học rốt vl'},
+      {id: 3, name: 'tốt bụng'}
     ]
   })
 });
