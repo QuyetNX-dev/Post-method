@@ -34,7 +34,7 @@ app.get("/todos", (req, res) => {
   `)
 });
 
-app.post('/todos',(req, res) => {
+app.post('/todos/create',(req, res) => {
   if(req.body.name !== ""){
     let user = {id: todos.length + 1, name: req.body.name}
     todos.push(user);
