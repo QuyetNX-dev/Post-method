@@ -12,7 +12,7 @@ app.set('views', './views')
 
 app.get("/", (req, res) => {
   res.render('index.pug',{
-    name: 'Quety'
+    todos
   })
 });
 
