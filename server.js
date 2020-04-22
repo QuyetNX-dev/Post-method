@@ -19,11 +19,17 @@ app.get("/", (req, res) => {
 app.get("/todos", (req, res) => {
   if(req.query.q){
     var q = req.query.q;
-    matched
+    var matchedTodo = todos.filter(item => {
+      return item.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+    })
+    res.render('todos.pug',{
+      todos : matchedTodo
+    })
   }
-  res.render('todos.pug',{
-    todos
-  })
+  res.send(`
+    <h1 style='text-align: center;'>Vui lòng nhập Url theo /todos?q=</h1>
+    <a style='display: block; text-align: center' href='/todos?q=nấu'>xem demo</a>
+  `)
 });
 
 // listen for requests :)
