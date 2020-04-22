@@ -9,6 +9,8 @@ var todos = [
 ]
 app.set('view engine', 'pug');
 app.set('views', './views')
+app.use(express.json()) // for parsing application/json
+app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 app.get("/", (req, res) => {
   res.render('index.pug',{
@@ -31,6 +33,14 @@ app.get("/todos", (req, res) => {
     <a style='display: block; text-align: center' href='/todos?q=nấu'>xem demo</a>
   `)
 });
+
+app.post('/todos',(req, res) => {
+  if(req.body.name !== ""){
+    let user = {id: todos.length + 1, name: req.body.name}
+    todos.push(user);
+    res.redirect('back')
+  }
+})
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
