@@ -1,7 +1,12 @@
 
 const express = require("express");
 const app = express();
-
+var todos = [
+  {id: 1, name: 'đẹp trai'},
+  {id: 2, name: 'học rốt vl'},
+  {id: 3, name: 'tốt bụng'},
+  {id: 4, name: 'nấu ăn ngon'}
+]
 app.set('view engine', 'pug');
 app.set('views', './views')
 
@@ -11,13 +16,13 @@ app.get("/", (req, res) => {
   })
 });
 
-app.get("/users", (req, res) => {
+app.get("/todos", (req, res) => {
+  if(req.query.q){
+    var q = req.query.q;
+    matched
+  }
   res.render('todos.pug',{
-    users: [
-      {id: 1, name: 'đẹp trai'},
-      {id: 2, name: 'học rốt vl'},
-      {id: 3, name: 'tốt bụng'}
-    ]
+    todos
   })
 });
 
